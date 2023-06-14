@@ -1,10 +1,11 @@
 import { getCurrentInstance } from 'vue'
 
 import { createToastInstance, closeById, closeAllNotifications, NotificationOptions } from '../toast'
+import { getCurrentApp } from '../../../services/current-app'
 
 /** This hook can be used without plugin used */
 export const useToast = () => {
-  const appContext = getCurrentInstance()?.appContext
+  const appContext = getCurrentInstance()?.appContext || getCurrentApp()?._context
 
   const createdInThisSetupContext: string[] = []
 
